@@ -1,0 +1,46 @@
+.dollar-logo{
+	height:2em;
+}
+
+mark, .mark {
+    padding: 0.15em;
+    background-color: #d9534e;
+    color:white;
+    border-radius: 0.4em;
+}
+
+.jumbotron{
+	background: white;
+	border: lightgray dotted 0.05em;
+    padding: 2rem 2rem;
+}
+
+.spinner{
+    position: absolute;
+    margin: auto;
+
+    left: 0;
+    right: 0;
+}
+
+.tag-pill{
+    margin: 0.2em;
+}
+
+#video-description{
+    font-size: 0.8em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.bg-light {
+    border:none;
+}
+
+
+.btn-outline-secondary.disabled, .btn-outline-secondary:disabled {
+    opacity: 1;
+}
+
+.btn-danger.disabled, .btn-danger:disabled {
+    opacity: 1;
+}

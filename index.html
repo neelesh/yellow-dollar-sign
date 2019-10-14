@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+    integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous">
+  </script>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <script src="js/app.js"></script>
+
+  <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/litera/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-D/7uAka7uwterkSxa2LwZR7RJqH2X6jfmhkJ0vFPGUtPyBMF2WMq9S+f9Ik5jJu1" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/site.css" />
+
+  <title>Yellow Dollar Sign</title>
+  <link rel="shortcut icon" href="img/logo.png" />
+</head>
+
+<body onload="getElements()">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand " href="#">
+      <img class="dollar-logo" src="img/logo.png" alt="" />
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">About<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="home" class="container">
+    <br />
+    <br />
+    <br />
+
+    <section id="cover">
+      <div id="cover-caption">
+        <div id="container" class="container">
+
+          <!--  INPUT -->
+          <div class="row ">
+            <div class="col-lg-8 offset-lg-2 text-center ">
+              <h2 class="display-6"> Yellow Dollar Sign</h2>
+              <br />
+
+              <p class="lead">This tool will analyse your YouTube video and suggest the words and phrases that may have
+                caused it to be demonetised.</p>
+              <br />
+
+
+              <div class="info-form">
+                <form action="" class="form-inlin justify-content-center">
+
+                  <div class="form-group input-group mb-2">
+                    <input id="video-url" type="text " class="form-control" placeholder="Paste video URL..."
+                      aria-label="Paste video URL...." aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button onclick="loadReport()" class="btn btn-outline-warning" type="button">Submit</button>
+                    </div>
+                  </div>
+
+                  <div class="alert alert-dismissible alert-danger pull-left" id="video-not-found">
+                    <button onclick="closeVideoNotFound()" type="button" class="close"
+                      data-dismiss="alert">&times;</button>
+                    Video not found.
+                  </div>
+                </form>
+              </div>
+              <br>
+
+            </div>
+          </div>
+
+          <!-- LOADING BAR -->
+
+          <div id="loading-spinner" class="spinner spinner-border text-warning" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+
+          <div class="progress" id="loading-bar">
+            <div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar"
+              aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+          </div>
+
+          <!--  OUTPUT  -->
+          <div id="video-report">
+
+            <div class="jumbotron">
+
+              <div id="no-detection" class="alert alert-dismissible alert-success pull-left">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                No sensitive words have been detected.
+              </div>
+
+              <div id="sensitive-words-detected" class="alert alert-dismissible alert-danger pull-left">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                Sensitive words have been detected and hilighted.
+              </div>
+
+              <!-- <hr class="my-4"> -->
+              <div class="row">
+
+                <div class="col-lg-4">
+                  <img id="video-thumbnail" style="width: 100%; object-fit: contain; vertical-align: top;" src="" />
+                  </br>
+                  </br>
+                </div>
+
+                <div class="col-lg-8">
+
+                  <h5 id="video-title" class="lead"></h5>
+
+                  <hr class="my-4">
+                  <p id="video-description"></p>
+
+                  <hr class="my-4">
+                  <div id="video-tags">
+                  </div>
+
+                </div>
+
+
+                <!-- 
+                <hr class="my-4">
+                <h5 id="video-title" class="lead"></h5>
+                <hr class="my-4">
+
+                <img id="video-thumbnail" style="height: 100%; width: 100%; object-fit: contain;" src="" alt="" />
+
+
+                <hr class="my-4">
+                <p class="lead">Description</p>
+
+                <p id="video-description"></p>
+
+
+                <hr class="my-4">
+                <p class="lead">Tags</p>
+
+                <div id="video-tags"> -->
+
+              </div>
+
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+
+</html>
