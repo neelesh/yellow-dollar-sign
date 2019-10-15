@@ -73,17 +73,16 @@ function loadReport() {
 
 }
 
-function resolveVideoId(videoURL){
+function resolveVideoId(videoURL) {
     spinner.style.display = "block";
 
-    if(videoURL.includes('v=')){
+    if (videoURL.includes('v=')) {
         var id = videoURL.split('v=')[1];
         var ampersandPosition = id.indexOf('&');
         if (ampersandPosition != -1) {
             id = id.substring(0, ampersandPosition);
-        }        
-    }
-    else if(videoURL.includes('.be/')){
+        }
+    } else if (videoURL.includes('.be/')) {
         var id = videoURL.split('.be/')[1];
     }
 
@@ -232,8 +231,8 @@ function isURLValid(str) {
 }
 
 function keySense(e) {
-    if(event.key === 'Enter') {
-        loadReport();       
+    if (event.key === 'Enter') {
+        loadReport();
+        document.activeElement.blur();
     }
-    document.activeElement.blur();
 }
