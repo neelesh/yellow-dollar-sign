@@ -62,9 +62,6 @@
   </nav>
 
   <div id="home" class="container">
-    <br />
-    <br />
-    <br />
 
     <section id="cover">
       <div id="cover-caption">
@@ -73,8 +70,8 @@
           <!--  INPUT -->
           <div class="row ">
             <div class="col-lg-8 offset-lg-2 text-center ">
-              <h2 class="display-6"> Yellow Dollar Sign</h2>
-              <br />
+              <h2 class="display-6 big-pad"> Yellow Dollar Sign</h2>
+
 
               <p class="lead">This tool will analyse your YouTube video and suggest the words and phrases that may have
                 caused it to be demonetised.</p>
@@ -89,18 +86,18 @@
               <br /> -->
 
 
-              <div class="info-form">
-                <form action="" class="form-inlin justify-content-center">
+              <div class="info-form small-pad">
+                <form action="" class="form-inlin justify-content-center" onSubmit="return false;">
 
                   <div class="form-group input-group mb-2">
-                    <input id="video-url" type="text " class="form-control" placeholder="Paste video URL..."
-                      aria-label="Paste video URL...." aria-describedby="basic-addon2">
+                    <input id="video-url" type="text " class="form-control input" placeholder="Paste video URL..."
+                      aria-label="Paste video URL...." onkeydown="keySense(this)">
                     <div class="input-group-append">
                       <button onclick="loadReport()" class="btn btn-outline-warning" type="button">Submit</button>
                     </div>
                   </div>
 
-                  <div class="alert alert-dismissible alert-danger pull-left" id="video-not-found">
+                  <div class="alert alert-dismissible alert-danger pull-left" style="display:none;" id="video-not-found">
                     <button onclick="closeVideoNotFound()" type="button" class="close"
                       data-dismiss="alert">&times;</button>
                     Video not found.
@@ -114,11 +111,11 @@
 
           <!-- LOADING BAR -->
 
-          <div id="loading-spinner" class="spinner spinner-border text-warning" role="status">
+          <div id="loading-spinner" class="spinner spinner-border text-warning" style="display:none;" role="status">
             <span class="sr-only">Loading...</span>
           </div>
 
-          <div class="progress" id="loading-bar">
+          <div class="progress" id="loading-bar" style="display:none;">
             <div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar"
               aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
           </div>
@@ -128,12 +125,12 @@
 
             <div class="jumbotron">
 
-              <div id="no-detection" class="alert alert-dismissible alert-success pull-left">
+              <div id="no-detection" class="alert alert-dismissible alert-success pull-left" style="display:none;">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 No sensitive words have been detected.
               </div>
 
-              <div id="sensitive-words-detected" class="alert alert-dismissible alert-danger pull-left">
+              <div id="sensitive-words-detected" class="alert alert-dismissible alert-danger pull-left" style="display:none;">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 Sensitive words have been detected and hilighted.
               </div>

@@ -49,3 +49,12 @@ mark, .mark {
     color: #fff;
     border-color: #f0ac4e;
     background-color: #f0ac4e;
+}
+
+.big-pad{
+    padding-top: 3em;
+}
+
+.small-pad{
+    padding-top: 1em;
+}

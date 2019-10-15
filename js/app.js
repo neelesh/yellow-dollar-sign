@@ -5,7 +5,6 @@ var badWordBackupURL = "https://raw.githubusercontent.com/neelesh/yellow-dollar-
 var videoURL;
 
 var videoReport;
-var loadingBar;
 var videoNotFound;
 
 var videoData;
@@ -26,7 +25,6 @@ function getElements() {
     videoDescription = document.getElementById('video-description');
     videoTags = document.getElementById('video-tags');
 
-    loadingBar = document.getElementById('loading-bar');
     spinner = document.getElementById('loading-spinner');
     videoNotFound = document.getElementById('video-not-found');
 
@@ -233,6 +231,9 @@ function isURLValid(str) {
     return !!pattern.test(str);
 }
 
-window.onload = function () {
-
+function keySense(e) {
+    if(event.key === 'Enter') {
+        loadReport();       
+    }
+    document.activeElement.blur();
 }
