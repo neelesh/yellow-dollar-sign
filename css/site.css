@@ -44,3 +44,8 @@ mark, .mark {
 .btn-danger.disabled, .btn-danger:disabled {
     opacity: 1;
 }
+
+.custom-control-input:checked ~ .custom-control-label::before {
+    color: #fff;
+    border-color: #f0ac4e;
+    background-color: #f0ac4e;
