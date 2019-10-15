@@ -56,7 +56,7 @@ function loadReport(){
     videoURL = document.getElementById('video-url').value;
     // console.log(videoURL)
 
-    if(!validURL(videoURL)){
+    if(!isURLValid(videoURL)){
         videoNotFound.style.display = 'block';
         return;
     }
@@ -206,7 +206,7 @@ function markWord(str, find){
 }
 
 
-function validURL(str) {
+function isURLValid(str) {
     var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
       '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
       '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
