@@ -19,6 +19,9 @@ function getElements() {
 
     getBadWords();
 
+    manualInputToggle = document.getElementById('manual-switch');
+
+    urlMode = document.getElementById('url-mode');
     videoReport = document.getElementById('video-report');
     videoTitle = document.getElementById('video-title');
     videoThumbail = document.getElementById('video-thumbnail');
@@ -31,6 +34,14 @@ function getElements() {
     noDetection = document.getElementById('no-detection');
     sensitiveWordsDetected = document.getElementById('sensitive-words-detected');
 
+
+    manualMode = document.getElementById('manual-mode');
+    manualTitle = document.getElementById('manual-title');
+    manualDescription = document.getElementById('manual-description');
+    manualTags = document.getElementById('manual-tags');
+    manualReport = document.getElementById('manual-report');
+    manualInputForm = document.getElementById('manual-input-form');
+
     // TODO: Load the google spreadsheet data
 
     startPage()
@@ -38,7 +49,7 @@ function getElements() {
 
 function startPage() {
     videoReport.style.display = "none";
-    loadingBar.style.display = "none";
+    // loadingBar.style.display = "none";
     spinner.style.display = "none";
     videoNotFound.style.display = "none";
 
@@ -160,31 +171,35 @@ function createVideoTags() {
 
         var tagSection = "";
 
-        for (var tag in videoData.tags) {
+        for (var index in videoData.tags) {
 
-            var button = document.createElement("button");
-            button.type = "button"
-            button.innerHTML = videoData.tags[tag];
-            button.disabled = 'disabled';
-
-            // Check to see if a tag contains a bad word
-            label = videoData.tags[tag]
-            for (var index in badwords) {
-                label = markWord(label, badwords[index])
-            }
-
-            if (label.includes("<mark>")) {
-                // Make it red
-                button.className = "btn btn-danger btn-sm tag-pill"
-            } else {
-                button.className = "btn btn-outline-secondary btn-sm tag-pill"
-            }
-
+            var button = makeTagButton(videoData.tags[index]);
 
             videoTags.appendChild(button)
 
         }
     }
+}
+
+function makeTagButton(tag) {
+    var button = document.createElement("button");
+    button.type = "button"
+    button.innerHTML = tag;
+    button.disabled = 'disabled';
+
+    // Check to see if a tag contains a bad word
+    label = tag
+    for (var index in badwords) {
+        label = markWord(label, badwords[index])
+    }
+
+    if (label.includes("<mark>")) {
+        // Make it red
+        button.className = "btn btn-danger btn-sm tag-pill"
+    } else {
+        button.className = "btn btn-outline-secondary btn-sm tag-pill"
+    }
+    return button;
 }
 
 function closeVideoNotFound() {
@@ -235,4 +250,52 @@ function keySense(e) {
         loadReport();
         document.activeElement.blur();
     }
+}
+
+function inputToggle() {
+    if (manualInputToggle.checked) {
+        urlMode.style.display = 'none';
+        manualMode.style.display = 'block';
+    } else {
+        manualMode.style.display = 'none';
+        urlMode.style.display = 'block';
+    }
+}
+
+function editManual() {
+    manualReport.style.display = 'none'
+    manualInputForm.style.display = 'block'
+}
+
+
+function updateManualReport() {
+    manualInputForm.style.display = 'none'
+    // Show a loading spinner
+
+    manualInputTitle = document.getElementById('title-manual');
+    manualInputDescription = document.getElementById('description-manual');
+    manualInputTags = document.getElementById('tags-manual');
+
+    var titleHTML = manualInputTitle.value;
+    var descriptionHTML = manualInputDescription.value
+
+    // video title and description
+    for (var index in badwords) {
+        titleHTML = markWord(titleHTML, badwords[index])
+        descriptionHTML = markWord(descriptionHTML, badwords[index])
+    }
+    manualTitle.innerHTML = titleHTML
+    manualDescription.innerHTML = descriptionHTML
+
+    // video tags
+    var tags = manualInputTags.value.split(',')
+    var tagHTML = ""
+
+
+    for (var t in tags) {
+        var button = makeTagButton(tags[t])
+        manualTags.appendChild(button)
+    }
+
+    manualReport.style.display = 'block'
 }
