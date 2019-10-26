@@ -42,6 +42,11 @@ function getElements() {
     manualReport = document.getElementById('manual-report');
     manualInputForm = document.getElementById('manual-input-form');
 
+
+    manualInputTitle = document.getElementById('title-manual');
+    manualInputDescription = document.getElementById('description-manual');
+    manualInputTags = document.getElementById('tags-manual');
+
     // TODO: Load the google spreadsheet data
 
     startPage()
@@ -272,9 +277,8 @@ function updateManualReport() {
     manualInputForm.style.display = 'none'
     // Show a loading spinner
 
-    manualInputTitle = document.getElementById('title-manual');
-    manualInputDescription = document.getElementById('description-manual');
-    manualInputTags = document.getElementById('tags-manual');
+    // get the elements
+
 
     var titleHTML = manualInputTitle.value;
     var descriptionHTML = manualInputDescription.value
@@ -292,10 +296,19 @@ function updateManualReport() {
     var tagHTML = ""
 
 
-    for (var t in tags) {
-        var button = makeTagButton(tags[t])
-        manualTags.appendChild(button)
+    removeChildObjects(manualTags);
+
+    if(tags.length!=0){
+        for (var t in tags) {
+            if(tags[t]){
+            var button = makeTagButton(tags[t])
+            manualTags.appendChild(button)
+            }
+        }
     }
 
+    if(!manualTitle.innerHTML) manualTitle.innerHTML = '-';
+    if(!manualDescription.innerHTML) manualDescription.innerHTML = '-';
+ 
     manualReport.style.display = 'block'
 }
